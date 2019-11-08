@@ -1,11 +1,26 @@
 package com.company;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-        System.out.println("Hello");
-        Scanner s = new Scanner(System.in);
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner s = new Scanner(new File("students.txt"));
+
+        List<String> students = new ArrayList<String>();
+
+        while(s.hasNextLine()){
+            students.add(s.nextLine());
+        }
+
+        for(int i = 0; i<students.size(); i++){
+            System.out.println("Name: " + students.get(i));
+        }
+
+        s.close();
     }
 }
